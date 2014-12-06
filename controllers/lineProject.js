@@ -17,30 +17,38 @@ countries = tempCountry[1];
 var conAfrica = __.where(countries, {
     continent: "AF"
 });
+console.log("Africa " + conAfrica.length);
 var conAntarctica = __.where(countries, {
     continent: "AN"
 });
+console.log("Antarctica " + conAntarctica.length);
 var conAsia = __.where(countries, {
     continent: "AS"
 });
+console.log("Asia " + conAsia.length);
 var conEurope = __.where(countries, {
     continent: "EU"
 });
+console.log("Europe " + conEurope.length);
 var conNorthAmerica = __.where(countries, {
     continent: "NA"
 });
+console.log("North America " + conNorthAmerica.length);
 var conOceania = __.where(countries, {
     continent: "OC"
 });
+console.log("Oceania " + conOceania.length);
 var conSouthAmerica = __.where(countries, {
     continent: "SA"
 });
-
+console.log("South America " + conSouthAmerica.length);
+console.log(conAfrica.length + conAntarctica.length + conAsia.length + conEurope.length + conNorthAmerica.length + conOceania.length + conSouthAmerica.length);
 var apiURL = "http://api.worldbank.org/countries/indicators/",
     apiFormat = "?per_page=100&date=1960:2014&format=json";
 
 exports.index = function (req, res, next) {
     countryModel = models.countriesModel;
+
     async.parallel([
 
     function (callback) {
@@ -57,12 +65,10 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED African countries!");
                     } else {
                         console.log(err);
                     }
                 });
-
             }
             callback();
     },
@@ -80,12 +86,10 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED Antarctican countries!");
                     } else {
                         console.log(err);
                     }
                 });
-
             }
             callback();
     },
@@ -103,12 +107,10 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED Asian countries!");
                     } else {
                         console.log(err);
                     }
                 });
-
             }
             callback();
     },
@@ -126,7 +128,6 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED European countries!");
                     } else {
                         console.log(err);
                     }
@@ -148,7 +149,6 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED North America countries!");
                     } else {
                         console.log(err);
                     }
@@ -170,7 +170,6 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED Oceania countries!");
                     } else {
                         console.log(err);
                     }
@@ -193,36 +192,107 @@ exports.index = function (req, res, next) {
                 country.save(function (err) {
                     if (!err) {
                         var entity = countryModel.toEntity(country);
-                        console.log("SAVED South America countries!");
                     } else {
                         console.log(err);
                     }
                 });
-
             }
-    },
+            callback();
+    }
 ], function (error, results) {
         if (error) console.log(error);
 
         console.log("SAVED ALL COUNTRIES!");
-    });
-
-
-};
-
-
-exports.getPovertyHeadcount125 = function (req, res, next) {
-    var tempGlobalArray = [];
-
-    request('http://api.worldbank.org/countries/indicators/1.0.HCount.1.25usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            result = JSON.parse(body);
-            console.log(result[0]);
-            res.send(conAsia);
-        }
+        res.send("SAVED ALL COUNTRIES!");
     });
 };
 
+/**
+ *Getting and saving of data from data.worldbank
+ */
+exports.PovertyHeadCount = function (req, res, next) {
+
+    function povertyHeadCount125() {
+        request('http://api.worldbank.org/countries/indicators/1.0.HCount.1.25usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+
+    function povertyHeadCount25() {
+        request('http://api.worldbank.org/countries/indicators/1.0.HCount.2.5usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+
+    function povertyHeadCount4() {
+        request('http://api.worldbank.org/countries/indicators/1.0.HCount.Poor4uds?per_page=273&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+
+};
+exports.PovertyGap = function (req, res, next) {
+    function povertyGap125() {
+        request('http://api.worldbank.org/countries/indicators/1.0.PGap.1.25usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+
+    function povertyGap25() {
+        request('http://api.worldbank.org/countries/indicators/1.0.PGap.2.5usd?per_page=100&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+
+    function povertyGap4() {
+        request('http://api.worldbank.org/countries/indicators/1.0.PGap.Poor4uds?per_page=100&date=1960:2014&format=json', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                result = JSON.parse(body);
+                console.log(result[0]);
+                return result[1];
+            }
+        });
+    }
+};
+
+/**
+ * Route to use for ng-app
+ */
+exports.getPovertyHeadCount125 = function (req, res, next) {
+
+};
+exports.getPovertyHeadCount25 = function (req, res, next) {
+
+};
+exports.getPovertyHeadCount4 = function (req, res, next) {
+
+};
 exports.getPovertyGap125 = function (req, res, next) {
+
+};
+exports.getPovertyGap25 = function (req, res, next) {
+
+};
+exports.getPovertyGap4 = function (req, res, next) {
 
 };
