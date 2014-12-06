@@ -1,3 +1,4 @@
 module.exports = [
-    ['api/index', 'index#index', 'get']
+    ['/api', 'index#index', 'get'],
+    ['/api/lineproject', 'lineProject#index', 'get']
 ];
