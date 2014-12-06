@@ -1,0 +1,76 @@
+body, html {
+	padding: 0; 
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	background: #000000;
+	color: #fff;
+	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-size: 18px;
+	height: 100%;
+	min-width: 960px;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.75em;
+    margin: 2.33em 0;
+}
+
+.row {
+	/*border: 1px solid red;*/
+	display:  table;
+	height: 100%;	
+	width: 100%;
+}
+
+.container {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+ul {
+	list-style: none;
+}
+
+ul li {
+	display: inline;
+}
+
+.clearfix {
+	clear: both;	
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
