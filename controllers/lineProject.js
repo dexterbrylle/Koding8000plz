@@ -212,67 +212,102 @@ exports.index = function (req, res, next) {
  */
 exports.PovertyHeadCount = function (req, res, next) {
 
-    function povertyHeadCount125() {
+    function povertyHeadCount125(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.HCount.1.25usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
                 console.log(result[0]);
-                return result[1];
+                callback(null, result[1]);
             }
         });
     }
 
-    function povertyHeadCount25() {
+    function povertyHeadCount25(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.HCount.2.5usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
                 console.log(result[0]);
-                return result[1];
+                callback(null, result[1]);
             }
         });
     }
 
-    function povertyHeadCount4() {
+    function povertyHeadCount4(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.HCount.Poor4uds?per_page=273&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
                 console.log(result[0]);
-                return result[1];
+                callback(null, result[1]);
             }
         });
     }
+
+    async.parallel([
+        async.apply(povertyHeadCount125),
+        async.apply(povertyHeadCount25),
+        async.apply(povertyHeadCount4)
+    ], function (error, results) {
+        if (error)
+            console.log(error)
+
+        var povertyHC125 = results[0],
+            povertyHC25 = results[1],
+            povertyHC4 = results[2];
+
+        console.log(results[0]);
+        console.log(results[1]);
+        res.send(results[2]);
+    });
 
 };
 exports.PovertyGap = function (req, res, next) {
-    function povertyGap125() {
+
+    function povertyGap125(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.PGap.1.25usd?per_page=273&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
-                console.log(result[0]);
-                return result[1];
+                //                console.log(result[0]);
+                callback(null, result[1]);
             }
         });
     }
 
-    function povertyGap25() {
+    function povertyGap25(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.PGap.2.5usd?per_page=100&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
-                console.log(result[0]);
-                return result[1];
+                //                console.log(result[0]);
+                callback(null, result[1]);
             }
         });
     }
 
-    function povertyGap4() {
+    function povertyGap4(callback) {
         request('http://api.worldbank.org/countries/indicators/1.0.PGap.Poor4uds?per_page=100&date=1960:2014&format=json', function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 result = JSON.parse(body);
-                console.log(result[0]);
-                return result[1];
+                //                console.log(result[0]);
+                callback(null, result[1]);
             }
         });
     }
+
+    async.parallel([
+        async.apply(povertyGap125),
+        async.apply(povertyGap25),
+        async.apply(povertyGap4)
+    ], function (error, results) {
+        if (error)
+            console.log(error);
+
+        var povertyG125 = results[0],
+            povertyG25 = results[1],
+            povertyG4 = results[2];
+
+        console.log(results[0]);
+        console.log(results[2]);
+        res.send(results[1]);
+    });
 };
 
 /**
