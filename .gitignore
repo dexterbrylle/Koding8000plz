@@ -1,5 +1,6 @@
 /node_modules
 /public/css
-/public/js
+/public/js/ng.js
+/public/js/ng.map
 /public/partials
 /public/index.html
