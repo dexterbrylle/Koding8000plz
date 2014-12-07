@@ -1,7 +1,60 @@
 .modal-header
-    h3.modal-title(style='color: black;') {{ selected_continent }}
-    .modal-body
-      h1(style='color: black;') Insert text here
-    .modal-footer
-      button.btn.btn-primary(ng-click='ok()') OK
-      button.btn.btn-warning(ng-click='cancel()') Cancel
+	h2.modal-title {{ selected_continent }}
+	.modal-body
+		.two-col
+			h4
+				| Poverty Headcount: 
+				span 25.28
+			h4
+				| Top: 
+				span 67%
+			.indent
+				h4
+					| Country: 
+					span Philippines
+				h4
+					| Year: 
+					span 2012
+				h4
+					| % of poverty head count: 
+					span 65%
+			h4
+				| Bottom: 
+				span 67%
+			.indent
+				h4
+					| Country: 
+					span Thailand
+				h4
+					| Year: 
+					span 2012
+				h4
+					| % of poverty head count: 
+					span 69%
+			h4
+				| Per Poverty Line: 
+				span USD 1.25
+		.two-col
+			.col-container
+				h4.two-col
+					| Continent: 
+				select
+					option(value='North America') North America
+					|       
+					option(value='South America') South America
+					|       
+					option(value='Antartica') Antartica
+					|       
+					option(value='Australia') Australia
+					|       
+					option(value='Africa') Africa
+					|       
+					option(value='Asia') Asia
+					|       
+					option(value='Europe') Europe
+			h4.two-col
+				| Target Amount: 
+				span USD 10,000
+	.modal-footer
+		button.btn.btn-primary(ng-click='ok()') OK
+		button.btn.btn-warning(ng-click='cancel()') Cancel

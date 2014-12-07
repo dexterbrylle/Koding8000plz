@@ -7,7 +7,7 @@ body, html {
 body {
 	background: #000000;
 	color: #fff;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-family: 'Segoue UI', Calibri, Arial, sans-serif;
 	font-size: 18px;
 	height: 100%;
 	min-width: 960px;
@@ -53,6 +53,11 @@ h6 {
 .container {
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.two-col {
+	display: table-cell;
+	width: 50%;
 }
 
 ul {

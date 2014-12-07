@@ -121,7 +121,10 @@
 	position: absolute;
 	height: 50%;
 	background: BLACK;
-	opacity: .7;
+	filter:alpha(opacity=60);
+	-moz-opacity:0.6;
+	-khtml-opacity: 0.6;
+	opacity: 0.6;
 	width: 100%;
 	z-index: 999;
 	pointer-events: none;
@@ -183,13 +186,13 @@ a.tooltips {
 
 a.tooltips span {
   position: absolute;
-  top: -187px;
+  top: -120px;
   width: 100%;
   margin: 0 auto;
   color: #FFFFFF;
   border: 2px solid #FFFFFF;
   height: 30px;
-  line-height: 30px;
+  line-height: 24px;
   text-align: center;
   visibility: hidden;
   border-radius: 6px;
@@ -222,7 +225,7 @@ a:hover.tooltips span {
   z-index: 999;
 }
 
-/* ============ NAVIGATION ============ */
+/* ============ FOOTER ============ */
 .footer {
 	display: table;
 	position: absolute;
@@ -258,6 +261,44 @@ a:hover.tooltips span {
 	font-size: 14px;
 }
 
+/* ============ MODAL ============ */
+.modal-dialog  {
+	width: 768px;
+	min-width: 768px !important;
+}
+
+.modal-content {
+	background-color: #424242 !important;
+	filter:alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity: 0.9;
+	opacity: 0.9;
+	border: 1px solid #fbfeff;
+}
+.modal-body {
+	display: table;
+	width: 100%;
+}
+
+.modal-body .indent {
+	padding-left: 1em;
+}
+
+.modal-body h4 {
+	font-weight: bold;
+	margin: 1em 0 0;
+}
+
+.modal-body span {
+	font-weight: normal;
+}
+
+.modal-body .col-container {
+	display: table;
+	width: 100%;
+	margin-bottom: 1em;
+}
+
 @media only screen and (max-width: 1200px) {
 	.main-header img {
 		width: 90%;
@@ -271,6 +312,7 @@ a:hover.tooltips span {
 	.chart ul.country li:first-child a span,
 	.chart ul.country li:nth-child(2) a span  {
 		height: 60px;
+		line-height: 26px;
 	}
 	.chart ul.country li img {
 		width: 100%;
