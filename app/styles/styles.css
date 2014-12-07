@@ -294,7 +294,7 @@ a:hover.tooltips span {
 }
 
 .modal-body span {
-	font-weight: normal;
+	font-weight: 100 !important;
 }
 
 .modal-body .col-container {
