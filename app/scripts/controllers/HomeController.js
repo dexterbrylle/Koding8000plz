@@ -40,15 +40,27 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 	$scope.asia_style 			= { 'padding-top': '0px', 'padding-bottom' : '0px' };
 	$scope.europe_style 		= { 'padding-top': '0px', 'padding-bottom' : '0px' };
 
-	$timeout(function(){
-		$scope.north_america_rate = 1;
-		$scope.south_america_rate = 0.9;
-		$scope.antartica_rate = 0.8;
-		$scope.australia_rate = 0.7;
-		$scope.africa_rate = 0.6;
-		$scope.asia_rate = 0.5;
-		$scope.europe_rate = 0.5;
-	}, 8000);
+	TheLineProjectService.project.gen_data().then(function(response){
+		if(response){
+			$scope.africa = response.Africa;
+			$scope.antartica = response.Antarctica;
+			$scope.asia = response.Asia;
+			$scope.europe = response.Europe;
+			$scope.north_america = response.NorthAmerica;
+			$scope.south_america = response.SouthAmerica;
+			$scope.australia = response.Oceania;
+
+			$scope.north_america_rate = $scope.north_america.averageHcount_125 / 100;
+			$scope.south_america_rate = $scope.south_america.averageHcount_125 / 100;
+			$scope.antartica_rate = $scope.antartica.averageHcount_125 / 100;
+			$scope.australia_rate = $scope.australia.averageHcount_125 / 100;
+			$scope.africa_rate = $scope.africa.averageHcount_125 / 100;
+			$scope.asia_rate = $scope.asia.averageHcount_125 / 100;
+			$scope.europe_rate = $scope.europe.averageHcount_125 / 100;
+		}
+	}, function(err){
+		console.log('#3 Error encountered. ' + err);
+	});
 
 	$scope.$watch('north_america_rate', function(now, then, scope){
 		now = 1 - now;
