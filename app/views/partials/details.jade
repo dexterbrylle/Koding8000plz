@@ -1,10 +1,10 @@
 .modal-header
-	//- h2.modal-title {{ selected_continent }}
+	h2.modal-title {{ selected_continent.continent }}
 	.modal-body
 		.two-col
 			h4
 				| Poverty Headcount: 
-				span {{ selected_continent.averageHcount_125 }}
+				span {{ selected_continent.averageHcount_125.toFixed(4) + '%' }}
 			h4
 				| Top: 
 				span
@@ -17,7 +17,7 @@
 					span {{ selected_continent.topCountry_Hcount_value.povertyhcount_125_date }}
 				h4
 					| % of poverty head count: 
-					span {{ selected_continent.topCountry_Hcount_value.povertyhcount_125_value + '%'}}
+					span {{ selected_continent.topCountry_Hcount_value.povertyhcount_125_value.toFixed(4) + '%'}}
 			h4
 				| Bottom: 
 				span
@@ -30,20 +30,20 @@
 					span {{ selected_continent.bottomCountry_Hcount_value.povertyhcount_125_date }}
 				h4
 					| % of poverty head count: 
-					span {{ selected_continent.bottomCountry_Hcount_value.povertyhcount_125_value + '%'}}
+					span {{ selected_continent.bottomCountry_Hcount_value.povertyhcount_125_value.toFixed(4) + '%'}}
 			h4
 				| Per Poverty Line: 
-				span USD 1.25
+				span USD {{ selected_continent.poverty_rate }}
 		.two-col
 			.col-container
 				h4.two-col
 					| Continent: 
-				select
+				select(ng-model='selected_continent.continent')
 					option(value='North America') North America
 					|       
 					option(value='South America') South America
 					|       
-					option(value='Antartica') Antartica
+					option(value='Antarctica') Antarctica
 					|       
 					option(value='Australia') Australia
 					|       
@@ -67,4 +67,4 @@
 					button.btn.btn-default(ng-click='donate()') Donate
 	.modal-footer
 		button.btn.btn-default(ng-click='ok()') OK
-		button.btn.btn-default(ng-click='cancel()') Cancel
+		//- button.btn.btn-default(ng-click='cancel()') Cancel

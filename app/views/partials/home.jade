@@ -1,4 +1,4 @@
-#home
+#home(ng-init='init()')
   .full-table
     .v-align-mid
       .main-header.center
@@ -24,6 +24,14 @@
         .clearfix
     .content
       .content-body 
+        h4.two-col
+          | Poverty Line: 
+          select(ng-model='poverty_rate')
+            option(value='125') USD 125
+            |       
+            option(value='4') USD 4
+            |       
+            option(value='25') USD 25
         .chart
           .grid
           ul.country
@@ -37,9 +45,9 @@
                 span S. America
                 img(src='/images/south-america.png')
             |                         
-            li(ng-style='antartica_style')
-              a.tooltips(ng-click='showDetails("Antartica")')
-                span Antartica
+            li(ng-style='antarctica_style')
+              a.tooltips(ng-click='showDetails("Antarctica")')
+                span Antarctica
                 img(src='/images/antartica.png')
             |                         
             li(ng-style='australia_style')
@@ -126,4 +134,4 @@
             a(href='#', title='Pinterest')
               img(src='/images/pinterest.png', alt='Pinterest')
         |                 
-        .clearfi
+        .clearfix
