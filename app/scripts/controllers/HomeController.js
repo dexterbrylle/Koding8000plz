@@ -1,27 +1,5 @@
 app.controller('HomeController', function($scope, $window, $http, $timeout, $modal, TheLineProjectService) {
 
-	// $scope.init = function(){
-	// 	$scope.name						= '';
-	// 	$scope.code						= '';
-	// 	$scope.native					= '';
-	// 	$scope.phone					= '';
-	// 	$scope.capital					= '';
-	// 	$scope.currency 				= '';
-	// 	$scope.languages 				= '';
-	// 	$scope.povertyhcount_125_value 	= '';
-	// 	$scope.povertyhcount_125_date 	= '';
-	// 	$scope.povertyhcount_25_value 	= '';
-	// 	$scope.povertyhcount_25_date 	= '';
-	// 	$scope.povertyhcount_4_value 	= '';
-	// 	$scope.povertyhcount_4_date  	= '';
-	// 	$scope.povertygap_125_value  	= '';
-	// 	$scope.povertygap_125_date 		= '';
-	// 	$scope.povertygap_25_value 		= '';
-	// 	$scope.povertygap_25_date 		= '';
-	// 	$scope.povertygap_4_value 		= '';
-	// 	$scope.povertygap_4_date 		= '';
-	// };
-
 	$scope.selected_continent = '';
 
 	$scope.north_america_rate = 0.5;
@@ -40,27 +18,29 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 	$scope.asia_style 			= { 'padding-top': '0px', 'padding-bottom' : '0px' };
 	$scope.europe_style 		= { 'padding-top': '0px', 'padding-bottom' : '0px' };
 
-	TheLineProjectService.project.gen_data().then(function(response){
-		if(response){
-			$scope.africa = response.Africa;
-			$scope.antartica = response.Antarctica;
-			$scope.asia = response.Asia;
-			$scope.europe = response.Europe;
-			$scope.north_america = response.NorthAmerica;
-			$scope.south_america = response.SouthAmerica;
-			$scope.australia = response.Oceania;
+	$scope.setMap = function(){
+		TheLineProjectService.project.gen_data().then(function(response){
+			if(response){
+				$scope.africa = response.Africa;
+				$scope.antartica = response.Antarctica;
+				$scope.asia = response.Asia;
+				$scope.europe = response.Europe;
+				$scope.north_america = response.NorthAmerica;
+				$scope.south_america = response.SouthAmerica;
+				$scope.australia = response.Oceania;
 
-			$scope.north_america_rate = $scope.north_america.averageHcount_125 / 100;
-			$scope.south_america_rate = $scope.south_america.averageHcount_125 / 100;
-			$scope.antartica_rate = $scope.antartica.averageHcount_125 / 100;
-			$scope.australia_rate = $scope.australia.averageHcount_125 / 100;
-			$scope.africa_rate = $scope.africa.averageHcount_125 / 100;
-			$scope.asia_rate = $scope.asia.averageHcount_125 / 100;
-			$scope.europe_rate = $scope.europe.averageHcount_125 / 100;
-		}
-	}, function(err){
-		console.log('#3 Error encountered. ' + err);
-	});
+				$scope.north_america_rate = $scope.north_america.averageHcount_125 / 100;
+				$scope.south_america_rate = $scope.south_america.averageHcount_125 / 100;
+				$scope.antartica_rate = $scope.antartica.averageHcount_125 / 100;
+				$scope.australia_rate = $scope.australia.averageHcount_125 / 100;
+				$scope.africa_rate = $scope.africa.averageHcount_125 / 100;
+				$scope.asia_rate = $scope.asia.averageHcount_125 / 100;
+				$scope.europe_rate = $scope.europe.averageHcount_125 / 100;
+			}
+		}, function(err){
+			console.log('#3 Error encountered. ' + err);
+		});
+	};
 
 	$scope.$watch('north_america_rate', function(now, then, scope){
 		now = 1 - now;
