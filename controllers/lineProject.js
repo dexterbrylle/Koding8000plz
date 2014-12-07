@@ -17,34 +17,24 @@ countries = tempCountry[1];
 var conAfrica = __.where(countries, {
     continent: "AF"
 });
-console.log("Africa " + conAfrica.length);
 var conAntarctica = __.where(countries, {
     continent: "AN"
 });
-console.log("Antarctica " + conAntarctica.length);
 var conAsia = __.where(countries, {
     continent: "AS"
 });
-console.log("Asia " + conAsia.length);
 var conEurope = __.where(countries, {
     continent: "EU"
 });
-console.log("Europe " + conEurope.length);
 var conNorthAmerica = __.where(countries, {
     continent: "NA"
 });
-console.log("North America " + conNorthAmerica.length);
 var conOceania = __.where(countries, {
     continent: "OC"
 });
-console.log("Oceania " + conOceania.length);
 var conSouthAmerica = __.where(countries, {
     continent: "SA"
 });
-console.log("South America " + conSouthAmerica.length);
-console.log(conAfrica.length + conAntarctica.length + conAsia.length + conEurope.length + conNorthAmerica.length + conOceania.length + conSouthAmerica.length);
-var apiURL = "http://api.worldbank.org/countries/indicators/",
-    apiFormat = "?per_page=100&date=1960:2014&format=json";
 
 var countryModel = models.countriesModel,
     afCountryModel = models.afCountriesModel,
@@ -54,22 +44,6 @@ var countryModel = models.countriesModel,
     naCountryModel = models.naCountriesModel,
     ocCountryModel = models.ocCountriesModel,
     saCountryModel = models.saCountriesModel;
-
-var afCountryNames = [],
-    anCountryNames = [],
-    asCountryNames = [],
-    euCountryNames = [],
-    naCountryNames = [],
-    ocCountryNames = [],
-    saCountryNames = [];
-
-afCountryNames.push(__.pluck(conAfrica, 'name'));
-anCountryNames.push(__.pluck(conAntarctica, 'name'));
-asCountryNames.push(__.pluck(conAsia, 'name'));
-euCountryNames.push(__.pluck(conEurope, 'name'));
-naCountryNames.push(__.pluck(conNorthAmerica, 'name'));
-ocCountryNames.push(__.pluck(conOceania, 'name'));
-saCountryNames.push(__.pluck(conSouthAmerica, 'name'));
 
 var randomValues = [17.0236, 27.2051, 29.9386, 6.0703, 19.8123, 18.1694, 16.284, 13.5752, 34.1043, 32.8647, 7.6282, 22.4806, 19.4939, 5.6427, 2.8281, 49.1538, 33.679, 30.353, 13.8071, 8.9801, 49.6638, 22.4303, 27.8024, 33.5185, 44.7696, 23.2957, 45.3602, 20.896, 9.0087, 26.4201, 26.0182, 39.7857, 28.3799, 3.2669, 39.6468, 30.7199, 11.3127, 30.2288, 12.2974, 24.6704, 31.6706, 28.4973, 39.9287, 22.1469, 37.7627, 9.7121, 47.4288, 28.4246, 49.1145, 18.0962, 2.3531, 5.5705, 42.1811, 13.0446, 39.5111, 13.8256, 49.8105, 42.0234, 26.6607, 11.5421, 39.6736, 17.1204, 33.8592, 22.9505, 41.6841, 21.1962, 14.849, 14.6954, 37.4214, 7.4523, 5.5922, 6.2385, 11.8103, 8.0537, 44.8813, 27.0426, 22.3021, 15.2161, 32.2167, 34.3396, 47.2635, 21.1814, 10.353, 39.0098, 44.7844, 37.5235, 49.0265, 12.9226, 17.5378, 18.8112, 30.7309, 46.8955, 29.4318, 9.5988, 39.476, 5.5637, 46.7183, 3.435, 41.9944, 12.4275, 18.0482, 28.3426, 4.4932, 18.0402, 24.4581, 9.669, 32.0162, 11.5218, 17.6282, 18.5557, 4.2273, 20.0877, 1.597, 24.3565, 17.713, 19.7251, 22.6181, 49.5764, 21.5352, 36.4353, 33.291, 43.8585, 3.0072, 36.7251, 8.6595, 25.9782, 31.9864, 41.4039, 5.9344, 43.4059, 43.2189, 44.4311, 12.1566, 40.0153, 8.9784, 13.8379, 41.614, 22.7078, 29.5728, 13.0067, 36.9731, 3.6579, 26.9594, 49.5865, 31.6152, 33.5237, 42.1155, 34.2205, 18.0372, 35.9425, 10.8952, 46.0045, 31.5466, 17.5602, 38.3746, 2.284, 47.7496, 15.0546, 31.4099, 35.4665, 30.2147, 29.1463, 20.7418, 46.2528, 10.0159, 47.2295, 28.9681, 8.5075, 44.7471, 43.8632, 9.4748, 8.068, 17.8328, 26.8559, 21.5914, 19.6015, 17.1008, 47.042, 22.4818, 10.7829, 49.7351, 49.1237, 49.5318, 33.1316, 31.4794, 28.6455, 16.9587, 10.6977, 22.5561, 32.0213, 31.1066, 19.9972, 33.2165, 1.8471, 42.3446, 19.0819, 49.1007, 46.7025, 10.7123, 12.2601, 38.3153, 3.3008, 34.7404, 22.9584, 17.1005, 28.6874, 29.4549, 25.7284, 19.3339, 44.2528, 11.6683, 42.8079, 28.9871, 26.0291, 41.3714, 34.6366, 17.1182, 46.7368, 17.597, 8.125, 31.3424, 48.3821, 39.6585, 29.5881, 24.585, 49.8594, 13.8347, 49.1137, 16.2967, 32.4707, 21.8831, 41.48, 8.5633, 14.5601, 27.6577, 6.4016, 6.4461, 8.4134, 21.0351, 23.0885, 2.8929, 15.9308, 2.4326, 4.0593, 35.9895, 18.8149, 25.9717, 30.1123, 19.7306, 3.2534, 22.5944, 10.5213, 17.7662, 22.5501, 31.6662, 14.3263, 2.6696, 39.2917, 11.5547, 28.3915, 38.1659, 20.2728, 14.9761, 27.3632, 46.9643, 18.6643, 16.0835, 32.3819, 16.4673, 35.9648, 10.9042, 31.0101, 47.944, 10.0886, 35.3654, 43.1325, 30.4911, 5.7411, 42.638, 30.431, 14.8053, 37.2257, 35.8046, 3.1386, 33.8207, 31.0534, 10.2367, 26.5768, 27.9778, 14.8794, 35.6806, 12.1105, 9.5083, 17.979, 28.6179, 41.4159, 8.9115, 41.8095, 26.9601, 27.9055, 23.3791, 44.095, 1.5102, 24.2999, 19.7242, 28.972, 44.0608, 13.9743, 27.1178, 17.248, 30.625, 15.3266, 46.3197, 21.9452, 30.6869, 14.7641, 37.9112, 5.4387, 6.46, 38.9353, 11.2317, 36.8608, 16.6574, 43.2501, 11.2458, 9.2848, 20.6907, 38.843, 39.6009, 30.472, 14.0025, 13.7649, 8.7586, 22.7493, 4.6268, 33.6687, 19.6424, 13.7791, 12.0749, 37.5918, 34.5885, 5.3269, 30.9729, 25.2655, 40.4059, 19.2868, 25.1528, 43.5369, 44.2876, 48.8429, 17.3375, 16.8092, 21.9911, 40.0379, 19.8841, 2.8467, 47.6417, 16.1877, 32.7966, 2.0943, 9.2568, 28.6299, 3.8717, 46.4473, 48.9659, 5.0637, 20.6695, 15.2026, 29.0168, 5.6756, 37.9148, 17.9911, 36.764, 12.881, 43.1609, 37.9532, 12.919, 18.4686, 6.2345, 45.811, 12.8044, 15.4982, 19.0183, 28.9558, 22.9328, 23.5621, 8.0919, 45.1999, 28.917, 30.428, 33.6502, 3.6323, 32.294, 8.1788, 43.8175, 49.0599, 22.5045, 1.6362, 42.6339, 13.1334];
 
@@ -294,32 +268,6 @@ exports.index = function (req, res, next) {
         res.send("SAVED ALL COUNTRIES!");
     });
 };
-
-exports.addPovertyHeadCount = function (req, res, next) {
-    async.parallel([
-
-        function (callback) {
-
-        },
-        function (callback) {},
-        function (callback) {},
-        function (callback) {},
-        function (callback) {},
-        function (callback) {},
-        function (callback) {}
-    ], function (error, results) {
-        if (error)
-            console.log(error);
-
-        console.log("SAVED!");
-        res.send("SAVED!");
-    })
-};
-
-exports.addPovertyGap = function (req, res, next) {
-
-};
-
 /**
  *Getting and saving of data from data.worldbank
  */
@@ -379,15 +327,6 @@ exports.PovertyHeadCount = function (req, res, next) {
             }
         }
 
-
-
-        /*__.find(afCountryNames, function (name) {
-            
-        });
-
-        res.send(temp);
-*/
-
     });
 
 };
@@ -442,19 +381,19 @@ exports.PovertyGap = function (req, res, next) {
     });
 };
 
+function removeDuplicates(arr) {
+    var temp = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (temp.indexOf(arr[i]) == -1) {
+            temp.push(arr[i]);
+        }
+    }
+    return temp;
+}
 /**
  * Route to use for ng-app
  */
 exports.getPovertyHeadCount125 = function (req, res, next) {
-    function removeDuplicates(arr) {
-        var temp = [];
-        for (var i = 0; i < arr.length; i++) {
-            if (temp.indexOf(arr[i]) == -1) {
-                temp.push(arr[i]);
-            }
-        }
-        return temp;
-    }
     async.parallel([
         //Africa
         function (callback) {
