@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 module.exports = function () {
-    this.collection = 'countries';
+    this.collection = 'asCountries';
 
     this.schema = mongoose.Schema({
         name: {
