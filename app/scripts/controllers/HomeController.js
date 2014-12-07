@@ -2,7 +2,7 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 
 	$scope.init = function(){
 		$scope.selected_continent 	= '';
-		$scope.poverty_rate 		= 125;
+		$scope.poverty_rate 		= '125';
 
 		$scope.north_america_rate 	= 0.5;
 		$scope.south_america_rate 	= 0.5;
@@ -23,7 +23,7 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 
 	$scope.setMap = function(){
 		var response;
-		if($scope.poverty_rate === 125){
+		if($scope.poverty_rate === '125'){
 			if($scope.details_125){
 				response = $scope.details_125;
 
@@ -64,7 +64,7 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 					console.log('#4 Error encountered.' + err);
 				});
 			}
-		} else if($scope.poverty_rate === 25){
+		} else if($scope.poverty_rate === '25'){
 			if($scope.details_25){
 				response = $scope.details_25;
 
@@ -105,7 +105,7 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 					console.log('#4 Error encountered.' + err);
 				});
 			}
-		} else if($scope.poverty_rate === 4){
+		} else if($scope.poverty_rate === '4'){
 			if($scope.details_4){
 				response = $scope.details_4;
 
@@ -126,7 +126,9 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 				$scope.europe_rate = $scope.europe.averageHcount_4 / 100;
 			} else {
 				TheLineProjectService.project.gen_data("4").then(function(response){
+
 					$scope.details_4 = response;
+					console.log($scope.details_4);
 					$scope.africa = response.Africa;
 					$scope.antarctica = response.Antarctica;
 					$scope.asia = response.Asia;
@@ -152,7 +154,6 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 	$scope.$watch('poverty_rate', function(now, then, scope){
 		if(now !== then){
 			$scope.setMap();
-			console.log('setting map. now: ' + now + ' then: ' + then);
 		}
 	});
 
@@ -295,8 +296,6 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, selected_continent) {
 
 	$scope.selected_continent = selected_continent;
-	console.log('selected continent');
-	console.log($scope.selected_continent);
 
 	if($scope.selected_continent.poverty_rate.toString() === '4'){
 		$scope.selected_continent.averageHcount_125 = $scope.selected_continent.averageHcount_4;
