@@ -161,14 +161,29 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 	});
 
 	$scope.showDetails = function(continent){
-		$scope.selected_continent = continent;	
+		
+			if(continent === "North America")
+				$scope.selected_continent = $scope.north_america;
+			if(continent === "South America")
+				$scope.selected_continent = $scope.south_america;
+			if(continent === "Antartica")
+				$scope.selected_continent = $scope.antartica;
+			if(continent === "Australia")
+				$scope.selected_continent = $scope.australia;
+			if(continent === "Africa")
+				$scope.selected_continent = $scope.africa;
+			if(continent === "Asia")
+				$scope.selected_continent = $scope.asia;
+			if(continent === "Europe")
+				$scope.selected_continent = $scope.europe;
+
 		var modalInstance = $modal.open({
 			templateUrl: '/partials/details.html',
 			controller: 'ModalInstanceCtrl',
 			size: 'lg',
 			resolve: {
 				selected_continent: function () {
-					return continent;
+					return $scope.selected_continent;
 				}
 			}
 		});
@@ -184,6 +199,8 @@ app.controller('HomeController', function($scope, $window, $http, $timeout, $mod
 app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, selected_continent) {
 
 	$scope.selected_continent = selected_continent;
+	console.log('selected continent');
+
 	$scope.selected = {
 		item: 'item1'
 	};
