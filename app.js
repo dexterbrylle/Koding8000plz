@@ -13,7 +13,7 @@ var app = express();
 
 mongoose.connect('mongodb://' + config.db.server + '/' + config.db.name);
 
-var port = process.env.PORT || 4000;
+var port = process.env.PORT || 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
