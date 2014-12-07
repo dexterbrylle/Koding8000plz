@@ -482,7 +482,6 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                 }
 
                 var years = removeDuplicates(__.pluck(africaCountries, 'povertyhcount_125_date'));
-                console.log(removeDuplicates(__.pluck(africaCountries, 'povertyhcount_125_date')));
                 africaDetails.years = years;
 
                 for (var q = 0, len = africaDetails.years.length; q < len; q++) {
@@ -534,6 +533,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     anTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     antarcticaCountries.push(anTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(antarcticaCountries, 'povertyhcount_125_date'));
+                antarcticaDetails.years = years;
+
+                for (var q = 0, len = antarcticaDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < antarcticaCountries.length; r++) {
+                        tempArray = __.filter(__.where(antarcticaCountries, {
+                            povertyhcount_125_date: antarcticaDetails.years[q]
+                        }), function (antarcticaCountry) {
+                            return antarcticaCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    antarcticaDetails.years[q] = sum / tempArray.length;
+                }
+
                 antarcticaDetails.topCountry_Hcount_value = __.max(antarcticaCountries, function (antarcticaCountry) {
                     return antarcticaCountry.povertyhcount_125_value;
                 });
@@ -566,6 +586,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     asTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     asiaCountries.push(asTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(asiaCountries, 'povertyhcount_125_date'));
+                asiaDetails.years = years;
+
+                for (var q = 0, len = asiaDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < asiaCountries.length; r++) {
+                        tempArray = __.filter(__.where(asiaCountries, {
+                            povertyhcount_125_date: asiaDetails.years[q]
+                        }), function (asiaCountry) {
+                            return asiaCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    asiaDetails.years[q] = sum / tempArray.length;
+                }
+
                 asiaDetails.topCountry_Hcount_value = __.max(asiaCountries, function (asiaCountry) {
                     return asiaCountry.povertyhcount_125_value;
                 });
@@ -598,6 +639,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     euTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     europeCountries.push(euTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(europeCountries, 'povertyhcount_125_date'));
+                europeDetails.years = years;
+
+                for (var q = 0, len = europeDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < europeCountries.length; r++) {
+                        tempArray = __.filter(__.where(europeCountries, {
+                            povertyhcount_125_date: europeDetails.years[q]
+                        }), function (europeCountry) {
+                            return europeCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    europeDetails.years[q] = sum / tempArray.length;
+                }
+
                 europeDetails.topCountry_Hcount_value = __.max(europeCountries, function (europeCountry) {
                     return europeCountry.povertyhcount_125_value;
                 });
@@ -630,6 +692,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     naTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     northAmericaCountries.push(naTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(northAmericaCountries, 'povertyhcount_125_date'));
+                northAmericaDetails.years = years;
+
+                for (var q = 0, len = northAmericaDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < northAmericaCountries.length; r++) {
+                        tempArray = __.filter(__.where(northAmericaCountries, {
+                            povertyhcount_125_date: northAmericaDetails.years[q]
+                        }), function (northAmericaCountry) {
+                            return northAmericaCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    northAmericaDetails.years[q] = sum / tempArray.length;
+                }
+
                 northAmericaDetails.topCountry_Hcount_value = __.max(northAmericaCountries, function (northAmericaCountry) {
                     return northAmericaCountry.povertyhcount_125_value;
                 });
@@ -662,6 +745,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     ocTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     oceaniaCountries.push(ocTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(oceaniaCountries, 'povertyhcount_125_date'));
+                oceaniaDetails.years = years;
+
+                for (var q = 0, len = oceaniaDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < oceaniaCountries.length; r++) {
+                        tempArray = __.filter(__.where(oceaniaCountries, {
+                            povertyhcount_125_date: oceaniaDetails.years[q]
+                        }), function (oceaniaCountry) {
+                            return oceaniaCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    oceaniaDetails.years[q] = sum / tempArray.length;
+                }
+
                 oceaniaDetails.topCountry_Hcount_value = __.max(oceaniaCountries, function (oceaniaCountry) {
                     return oceaniaCountry.povertyhcount_125_value;
                 });
@@ -694,6 +798,27 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     saTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
                     southAmericaCountries.push(saTemp);
                 }
+
+                var years = removeDuplicates(__.pluck(southAmericaCountries, 'povertyhcount_125_date'));
+                southAmericaDetails.years = years;
+
+                for (var q = 0, len = southAmericaDetails.years.length; q < len; q++) {
+                    var tempArray = [];
+                    for (r = 0; r < southAmericaCountries.length; r++) {
+                        tempArray = __.filter(__.where(southAmericaCountries, {
+                            povertyhcount_125_date: southAmericaDetails.years[q]
+                        }), function (southAmericaCountry) {
+                            return southAmericaCountry.povertyhcount_125_value;
+                        });
+                    }
+                    var sum = 0;
+                    var i = tempArray.length;
+                    while (i--) {
+                        sum += tempArray[i].povertyhcount_125_value;
+                    }
+                    southAmericaDetails.years[q] = sum / tempArray.length;
+                }
+
                 southAmericaDetails.topCountry_Hcount_value = __.max(southAmericaCountries, function (southAmericaCountry) {
                     return southAmericaCountry.povertyhcount_125_value;
                 });
