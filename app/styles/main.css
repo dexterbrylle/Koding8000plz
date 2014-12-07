@@ -75,6 +75,20 @@ ul li {
 	display: inline;
 }
 
+.btn-default {
+	color: #FFE;
+	background-color: transparent;
+	border-color: #fff;
+	outline: none;
+	border-radius: 0;
+}
+
+.btn-primary:hover {
+	background: #d2d2d2;
+	border: 1px solid #555;
+	color: #000;
+}
+
 .clearfix {
 	clear: both;	
 }

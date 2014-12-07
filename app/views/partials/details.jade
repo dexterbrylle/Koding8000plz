@@ -52,14 +52,19 @@
 					option(value='Asia') Asia
 					|       
 					option(value='Europe') Europe
-			h4.two-col
-				| Target Amount: 
-			select
+			.col-container
+				h4.two-col
+					| Target Amount: 
+				select
 					option USD 5,000
 					|       
 					option USD 15,000
 					|       
 					option USD 25,000
+			.col-container
+				.two-col
+				.two-col		
+					button.btn.btn-default(ng-click='donate()') Donate
 	.modal-footer
-		button.btn.btn-primary(ng-click='ok()') OK
-		button.btn.btn-warning(ng-click='cancel()') Cancel
+		button.btn.btn-default(ng-click='ok()') OK
+		button.btn.btn-default(ng-click='cancel()') Cancel
