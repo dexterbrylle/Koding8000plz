@@ -36,38 +36,38 @@
       .chart
         .grid
         ul.country
-          li
-            a.tooltips(href='#', ng-click='showDetails("North America")')
+          li(ng-style='north_america_style')
+            a.tooltips(ng-click='showDetails("North America")')
               span North America
               img(src='/images/north-america.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("South America")')
+          li(ng-style='south_america_style')
+            a.tooltips(ng-click='showDetails("South America")')
               span South America
               img(src='/images/south-america.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("Antartica")')
+          li(ng-style='antartica_style')
+            a.tooltips(ng-click='showDetails("Antartica")')
               span Antartica
               img(src='/images/antartica.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("Australia")')
+          li(ng-style='australia_style')
+            a.tooltips(ng-click='showDetails("Australia")')
               span Australia
               img(src='/images/australia.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("Africa")')
+          li(ng-style='africa_style')
+            a.tooltips(ng-click='showDetails("Africa")')
               span Africa
               img(src='/images/africa.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("Asia")')
+          li(ng-style='asia_style')
+            a.tooltips(ng-click='showDetails("Asia")')
               span Asia
               img(src='/images/asia.png')
           |                         
-          li
-            a.tooltips(href='#', ng-click='showDetails("Europe")')
+          li(ng-style='europe_style')
+            a.tooltips(ng-click='showDetails("Europe")')
               span Europe
               img(src='/images/europe.png')
         |                    
