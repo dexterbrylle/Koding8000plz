@@ -44,25 +44,9 @@ module.exports = function () {
         povertyhcount_4_date: {
             type: String
         },
-        povertygap_125_value: {
-            type: String
-        },
-        povertygap_125_date: {
-            type: String
-        },
-        povertygap_25_value: {
-            type: String
-        },
-        povertygap_25_date: {
-            type: String
-        },
-        povertygap_4_value: {
-            type: String
-        },
-        povertygap_4_date: {
-            type: String
-        },
-
+        antarcticaDonations: {
+            type: Number
+        }
     });
 
     this.schema.statics.toEntity = function (rawModel) {
@@ -80,12 +64,7 @@ module.exports = function () {
             'povertyhcount_25_date': rawModel.povertyhcount_25_date,
             'povertyhcount_4_value': rawModel.povertyhcount_4_value,
             'povertyhcount_4_date': rawModel.povertyhcount_4_date,
-            'povertygap_125_value': rawModel.povertygap_125_value,
-            'povertygap_125_date': rawModel.povertygap_125_date,
-            'povertygap_25_value': rawModel.povertygap_25_value,
-            'povertygap_25_date': rawModel.povertygap_25_date,
-            'povertygap_4_value': rawModel.povertygap_4_value,
-            'povertygap_4_date': rawModel.povertygap_4_date
+            'antarcticaDonations': rawModel.antarcticaDonations
         };
     };
 

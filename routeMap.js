@@ -5,5 +5,6 @@ module.exports = [
     ['/api/lineproject/PovertyGap', 'lineProject#PovertyGap', 'get'],
     ['/api/lineproject/getPovertyHeadCount125', 'lineProject#getPovertyHeadCount125', 'get'],
     ['/api/lineproject/getPovertyHeadCount25', 'lineProject#getPovertyHeadCount25', 'get'],
-    ['/api/lineproject/getPovertyHeadCount4', 'lineProject#getPovertyHeadCount4', 'get']
+    ['/api/lineproject/getPovertyHeadCount4', 'lineProject#getPovertyHeadCount4', 'get'],
+    ['/api/lineproject/automateDonations', 'lineProject#automateDonations', 'get']
 ];
