@@ -146,6 +146,10 @@
 	text-align: center;
 }
 
+.chart ul.country li a {
+	cursor: pointer;
+}
+
 .chart ul.year {
 	position: absolute;
 	bottom: -55px;
@@ -160,7 +164,6 @@
 }
 
 .chart ul.year li a {
-
 	color: #ffffff;
 	text-decoration: none;
 }
@@ -262,6 +265,7 @@ a:hover.tooltips span {
 }
 
 /* ============ MODAL ============ */
+
 .modal-dialog  {
 	width: 768px;
 	min-width: 768px !important;
