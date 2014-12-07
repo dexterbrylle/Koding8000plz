@@ -37,37 +37,37 @@
         .grid
         ul.country
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("North America")')
               span North America
               img(src='/images/north-america.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("South America")')
               span South America
               img(src='/images/south-america.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("Antartica")')
               span Antartica
               img(src='/images/antartica.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("Australia")')
               span Australia
               img(src='/images/australia.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("Africa")')
               span Africa
               img(src='/images/africa.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("Asia")')
               span Asia
               img(src='/images/asia.png')
           |                         
           li
-            a.tooltips(href='#')
+            a.tooltips(href='#', ng-click='showDetails("Europe")')
               span Europe
               img(src='/images/europe.png')
         |                    
@@ -98,9 +98,7 @@
         li
           a(href='#', title='Pinterest')
             img(src='/images/pinterest.png', alt='Pinterest')
-      |                 
       .clearfix
-|
 #module
   .row
     .container

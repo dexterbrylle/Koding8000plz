@@ -1,2 +1,0 @@
-var app=angular.module("TheLineProject",["ngRoute","ngResource"]);app.config(["$routeProvider",function($routeProvider){$routeProvider.when("/",{controller:"HomeController",templateUrl:"/partials/home.html"})}]),app.service("TheLineProject",function(){var self=this;self.API_URL="/api"}),app.controller("HomeController",function(){console.log("Home Controller")});
-//# sourceMappingURL=ng.map
