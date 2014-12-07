@@ -1,90 +1,80 @@
 #home
-  .row
-    .container
-      .main-header
-        img(src='/images/header.png')
-        |                     
-        div
-          p(style="text-align:center")
-            | Poverty is a global problem that needs more attention. Millions die everyday due to hunger, homelessness, and lack of medical care.
-    |             
+  .full-table
+    .v-align-mid
+      .main-header.center
+        img(src='/images/header.png')    
+        .desc THE POVERTY LINE PROJECT is a visualization tool of countries (and continents as a whole) that live below the poverty the line. It aims to educate the people of the less fortunate all over the globe. It will also serve as a portal wherein people from all walks of life are able to donate to UNICEF and it's partner charity organizations.            
     .footer
       a(href='#map', du-smooth-scroll du-scrollspy)
-        img(src='/images/arrow-down.png')
-|     
+        img(src='/images/arrow-down.png')        
 #map
-  .row
+  .full-table
     .header
       div
-        img(src='/images/sub-header.png')
-      |                 
+        img(src='/images/sub-header.png')                
       .nav
         ul.right
           li
             a(href='#home', title='Home', du-smooth-scroll du-scrollspy)
-              img(src='/images/home-icon.png', alt='Home')
-          |                         
+              img(src='/images/home-icon.png', alt='Home')                        
           li
-            a(href='#about', title='About', du-smooth-scroll du-scrollspy) About
-          |                         
+            a(href='#about', title='About', du-smooth-scroll du-scrollspy) About                        
           li
-            a(href='#', title='Donate') Donate
-      |                 
-      .clearfix
-    |             
+            a(href='#', title='Donate') Donate                
+        .clearfix
     .content
-      .chart
-        .grid
-        ul.country
-          li(ng-style='north_america_style')
-            a.tooltips(ng-click='showDetails("North America")')
-              span North America
-              img(src='/images/north-america.png')
-          |                         
-          li(ng-style='south_america_style')
-            a.tooltips(ng-click='showDetails("South America")')
-              span South America
-              img(src='/images/south-america.png')
-          |                         
-          li(ng-style='antartica_style')
-            a.tooltips(ng-click='showDetails("Antartica")')
-              span Antartica
-              img(src='/images/antartica.png')
-          |                         
-          li(ng-style='australia_style')
-            a.tooltips(ng-click='showDetails("Australia")')
-              span Australia
-              img(src='/images/australia.png')
-          |                         
-          li(ng-style='africa_style')
-            a.tooltips(ng-click='showDetails("Africa")')
-              span Africa
-              img(src='/images/africa.png')
-          |                         
-          li(ng-style='asia_style')
-            a.tooltips(ng-click='showDetails("Asia")')
-              span Asia
-              img(src='/images/asia.png')
-          |                         
-          li(ng-style='europe_style')
-            a.tooltips(ng-click='showDetails("Europe")')
-              span Europe
-              img(src='/images/europe.png')
-        |                    
-        ul.year
-          li: a(href='#') 2000                       
-          li: a(href='#') 2001                
-          li: a(href='#') 2002                   
-          li: a(href='#') 2003                   
-          li: a(href='#') 2004                    
-          li: a(href='#') 2005                  
-          li: a(href='#') 2006                  
-          li: a(href='#') 2007
-          li: a(href='#') 2008
-          li: a(href='#') 2009
-          li: a(href='#') 2010
-          li: a(href='#') 2011
-          li: a(href='#') 2012
+      .content-body 
+        .chart
+          .grid
+          ul.country
+            li(ng-style='north_america_style')
+              a.tooltips(ng-click='showDetails("North America")')
+                span N. America
+                img(src='/images/north-america.png')
+            |                         
+            li(ng-style='south_america_style')
+              a.tooltips(ng-click='showDetails("South America")')
+                span S. America
+                img(src='/images/south-america.png')
+            |                         
+            li(ng-style='antartica_style')
+              a.tooltips(ng-click='showDetails("Antartica")')
+                span Antartica
+                img(src='/images/antartica.png')
+            |                         
+            li(ng-style='australia_style')
+              a.tooltips(ng-click='showDetails("Australia")')
+                span Australia
+                img(src='/images/australia.png')
+            |                         
+            li(ng-style='africa_style')
+              a.tooltips(ng-click='showDetails("Africa")')
+                span Africa
+                img(src='/images/africa.png')
+            |                         
+            li(ng-style='asia_style')
+              a.tooltips(ng-click='showDetails("Asia")')
+                span Asia
+                img(src='/images/asia.png')
+            |                         
+            li(ng-style='europe_style')
+              a.tooltips(ng-click='showDetails("Europe")')
+                span Europe
+                img(src='/images/europe.png')                 
+          ul.year
+            li: a(href='#') 2000                       
+            li: a(href='#') 2001                
+            li: a(href='#') 2002                   
+            li: a(href='#') 2003                   
+            li: a(href='#') 2004                    
+            li: a(href='#') 2005                  
+            li: a(href='#') 2006                  
+            li: a(href='#') 2007
+            li: a(href='#') 2008
+            li: a(href='#') 2009
+            li: a(href='#') 2010
+            li: a(href='#') 2011
+            li: a(href='#') 2012  
     .footer
       ul.right
         li
@@ -100,7 +90,7 @@
             img(src='/images/pinterest.png', alt='Pinterest')
       .clearfix
 #about
-  .content
+  .full-table
     .two-col
     |             
     .two-col
