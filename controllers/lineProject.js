@@ -446,7 +446,56 @@ exports.PovertyGap = function (req, res, next) {
  * Route to use for ng-app
  */
 exports.getPovertyHeadCount125 = function (req, res, next) {
+    async.parallel([
 
+        function (callback) {
+            var query = afCountryModel.find();
+            var afCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var afAverage = sum / data.length;
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var afTemp = {};
+                    afTemp.name = data[k].name;
+                    afTemp.povertyhcount_125_value = data[k].povertyhcount_125_value;
+                    afTemp.povertyhcount_125_date = data[k].povertyhcount_125_date;
+                    afTemp.africaAverageHCount_125_value = afAverage;
+                    afCountries.push(afTemp);
+                }
+                //                console.log(afCountries.length);
+                callback(null, afCountries);
+            });
+        }
+        /*function (callback) {
+            //anCountryModel
+        },
+        function (callback) {
+            //asCountryModel
+        },
+        function (callback) {
+            //euCountryModel
+        },
+        function (callback) {
+            //naCountryModel
+        },
+        function (callback) {
+            //ocCountryModel
+        },
+        function (callback) {
+            //saCountryModel
+        },*/
+    ], function (error, results) {
+        if (error)
+            console.log(error);
+        //console.log(results[0].length);
+        res.send(results);
+    });
 };
 exports.getPovertyHeadCount25 = function (req, res, next) {
 
