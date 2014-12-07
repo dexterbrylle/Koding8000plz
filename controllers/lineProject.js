@@ -447,10 +447,11 @@ exports.PovertyGap = function (req, res, next) {
  */
 exports.getPovertyHeadCount125 = function (req, res, next) {
     async.parallel([
-
+        //Africa
         function (callback) {
             var query = afCountryModel.find();
-            var afCountries = [];
+            var africaDetails = {};
+            var africaCountries = [];
             query.exec(function (err, data) {
                 if (err)
                     console.log(err);
@@ -460,41 +461,236 @@ exports.getPovertyHeadCount125 = function (req, res, next) {
                     sum += +data[i].povertyhcount_125_value;
                 }
                 var afAverage = sum / data.length;
+                africaDetails.averageHcount_125 = afAverage;
+
                 for (var k = 0, len = data.length; k < len; k++) {
                     var afTemp = {};
                     afTemp.name = data[k].name;
-                    afTemp.povertyhcount_125_value = data[k].povertyhcount_125_value;
-                    afTemp.povertyhcount_125_date = data[k].povertyhcount_125_date;
-                    afTemp.africaAverageHCount_125_value = afAverage;
-                    afCountries.push(afTemp);
+                    afTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    afTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    africaCountries.push(afTemp);
                 }
-                //                console.log(afCountries.length);
-                callback(null, afCountries);
+                africaDetails.topCountry_Hcount_value = __.max(africaCountries, function (africaCountry) {
+                    return africaCountry.povertyhcount_125_value;
+                });
+                africaDetails.bottomCountry_Hcount_value = __.min(africaCountries, function (africaCountry) {
+                    return africaCountry.povertyhcount_125_value;
+                });
+                console.log(africaCountries);
+                callback(null, africaDetails);
             });
-        }
-        /*function (callback) {
-            //anCountryModel
         },
+        //Antarctica
         function (callback) {
-            //asCountryModel
+            var query = anCountryModel.find();
+            var antarcticaDetails = {};
+            var antarcticaCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var anAverage = sum / data.length;
+                antarcticaDetails.averageHcount_125 = anAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var anTemp = {};
+                    anTemp.name = data[k].name;
+                    anTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    anTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    antarcticaCountries.push(anTemp);
+                }
+                antarcticaDetails.topCountry_Hcount_value = __.max(antarcticaCountries, function (antarcticaCountry) {
+                    return antarcticaCountry.povertyhcount_125_value;
+                });
+                antarcticaDetails.bottomCountry_Hcount_value = __.min(antarcticaCountries, function (antarcticaCountry) {
+                    return antarcticaCountry.povertyhcount_125_value;
+                });
+                console.log(antarcticaCountries);
+                callback(null, antarcticaDetails);
+            });
         },
+        //Asia
         function (callback) {
-            //euCountryModel
+            var query = asCountryModel.find();
+            var asiaDetails = {};
+            var asiaCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var asAverage = sum / data.length;
+                asiaDetails.averageHcount_125 = asAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var asTemp = {};
+                    asTemp.name = data[k].name;
+                    asTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    asTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    asiaCountries.push(asTemp);
+                }
+                asiaDetails.topCountry_Hcount_value = __.max(asiaCountries, function (asiaCountry) {
+                    return asiaCountry.povertyhcount_125_value;
+                });
+                asiaDetails.bottomCountry_Hcount_value = __.min(asiaCountries, function (asiaCountry) {
+                    return asiaCountry.povertyhcount_125_value;
+                });
+                console.log(asiaCountries);
+                callback(null, asiaDetails);
+            });
         },
+        //Europe
         function (callback) {
-            //naCountryModel
+            var query = euCountryModel.find();
+            var europeDetails = {};
+            var europeCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var euAverage = sum / data.length;
+                europeDetails.averageHcount_125 = euAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var euTemp = {};
+                    euTemp.name = data[k].name;
+                    euTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    euTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    europeCountries.push(euTemp);
+                }
+                europeDetails.topCountry_Hcount_value = __.max(europeCountries, function (europeCountry) {
+                    return europeCountry.povertyhcount_125_value;
+                });
+                europeDetails.bottomCountry_Hcount_value = __.min(europeCountries, function (europeCountry) {
+                    return europeCountry.povertyhcount_125_value;
+                });
+                console.log(europeCountries);
+                callback(null, europeDetails);
+            });
         },
+        //North America
         function (callback) {
-            //ocCountryModel
+            var query = naCountryModel.find();
+            var northAmericaDetails = {};
+            var northAmericaCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var naAverage = sum / data.length;
+                northAmericaDetails.averageHcount_125 = naAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var naTemp = {};
+                    naTemp.name = data[k].name;
+                    naTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    naTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    northAmericaCountries.push(naTemp);
+                }
+                northAmericaDetails.topCountry_Hcount_value = __.max(northAmericaCountries, function (northAmericaCountry) {
+                    return northAmericaCountry.povertyhcount_125_value;
+                });
+                northAmericaDetails.bottomCountry_Hcount_value = __.min(northAmericaCountries, function (northAmericaCountry) {
+                    return northAmericaCountry.povertyhcount_125_value;
+                });
+                console.log(northAmericaCountries);
+                callback(null, northAmericaDetails);
+            });
         },
+        //Oceania
         function (callback) {
-            //saCountryModel
-        },*/
+            var query = ocCountryModel.find();
+            var oceaniaDetails = {};
+            var oceaniaCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var ocAverage = sum / data.length;
+                oceaniaDetails.averageHcount_125 = ocAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var ocTemp = {};
+                    ocTemp.name = data[k].name;
+                    ocTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    ocTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    oceaniaCountries.push(ocTemp);
+                }
+                oceaniaDetails.topCountry_Hcount_value = __.max(oceaniaCountries, function (oceaniaCountry) {
+                    return oceaniaCountry.povertyhcount_125_value;
+                });
+                oceaniaDetails.bottomCountry_Hcount_value = __.min(oceaniaCountries, function (oceaniaCountry) {
+                    return oceaniaCountry.povertyhcount_125_value;
+                });
+                console.log(oceaniaCountries);
+                callback(null, oceaniaDetails);
+            });
+        },
+        //South America
+        function (callback) {
+            var query = saCountryModel.find();
+            var southAmericaDetails = {};
+            var southAmericaCountries = [];
+            query.exec(function (err, data) {
+                if (err)
+                    console.log(err);
+                var sum = 0;
+                var i = data.length;
+                while (i--) {
+                    sum += +data[i].povertyhcount_125_value;
+                }
+                var saAverage = sum / data.length;
+                southAmericaDetails.averageHcount_125 = saAverage;
+
+                for (var k = 0, len = data.length; k < len; k++) {
+                    var saTemp = {};
+                    saTemp.name = data[k].name;
+                    saTemp.povertyhcount_125_value = +data[k].povertyhcount_125_value;
+                    saTemp.povertyhcount_125_date = +data[k].povertyhcount_125_date;
+                    southAmericaCountries.push(saTemp);
+                }
+                southAmericaDetails.topCountry_Hcount_value = __.max(southAmericaCountries, function (southAmericaCountry) {
+                    return southAmericaCountry.povertyhcount_125_value;
+                });
+                southAmericaDetails.bottomCountry_Hcount_value = __.min(southAmericaCountries, function (southAmericaCountry) {
+                    return southAmericaCountry.povertyhcount_125_value;
+                });
+                console.log(southAmericaCountries);
+                callback(null, southAmericaDetails);
+            });
+        },
     ], function (error, results) {
         if (error)
             console.log(error);
         //console.log(results[0].length);
-        res.send(results);
+        var lineProject_hcount_125 = {};
+        lineProject_hcount_125.Africa = results[0];
+        lineProject_hcount_125.Antarctica = results[1];
+        lineProject_hcount_125.Asia = results[2];
+        lineProject_hcount_125.Europe = results[3];
+        lineProject_hcount_125.NorthAmerica = results[4];
+        lineProject_hcount_125.Oceania = results[5];
+        lineProject_hcount_125.SouthAmerica = results[6];
+        res.send(lineProject_hcount_125);
     });
 };
 exports.getPovertyHeadCount25 = function (req, res, next) {
