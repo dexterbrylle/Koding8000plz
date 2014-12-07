@@ -54,7 +54,12 @@
 					option(value='Europe') Europe
 			h4.two-col
 				| Target Amount: 
-				span USD 10,000
+			select
+					option USD 5,000
+					|       
+					option USD 15,000
+					|       
+					option USD 25,000
 	.modal-footer
 		button.btn.btn-primary(ng-click='ok()') OK
 		button.btn.btn-warning(ng-click='cancel()') Cancel
