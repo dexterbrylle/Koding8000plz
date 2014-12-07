@@ -168,6 +168,10 @@
 	text-decoration: none;
 }
 
+.chart ul.year li a:hover {
+	text-decoration: underline;
+}
+
 #map .footer {
 	display: table;
 	width: 100%;
