@@ -1,3 +1,9 @@
+@font-face {
+	font-family:"Futura";
+	src:url("../fonts/Futura_Oblique.eot");
+	src:url("../fonts/Futura_Oblique.ttf") format('truetype');
+}
+
 body, html {
 	padding: 0; 
 	margin: 0;
